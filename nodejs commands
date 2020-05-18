@@ -1,0 +1,315 @@
+Instalar nodejs
+En linux:
+    ++sudo apt update -y && sudo apt upgrade -y (si se desea actualizar primero las dependencias y repositorios en linux)
+    ++Instalar nvm (Node Version Manager), con el que se puede instalar diferentes versiones de nodejs
+        +++Ir a google, escribir nvm, ingresar al repositorio y copiar (wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash) pegarlo en la terminal
+        +++Terminal> wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+        +++Terminal> Exit y habrirla nuevamente
+        +++Terminal> nvm  (para verificar la instalacion)
+        +++Terminal> nvm install --lts   (instalar la ultima version de nodejs la version LTS "Lonten suport")
+        +++Terminal> node -v   (Verificar la instalacion de nodejs)
+
+        En Windows:
+            puedes usar windows sin problemas solo debemos tener en cuenta que en este SO toca emular muchas cosas , por lo que primero debes instalar Git , también te recomiendo que instales un subsistema de linux (para que te salga una consola de windows ) y luego solo descargar esto , aunque puede que esto ultimo sea lo único que necesites .
+            https://nodejs.org/es/download/ paquete de instalación
+            https://cmder.net/ para emular la consola de windows
+
+        Instalar diferentes versiones de nodejs
+            La última versión es 10.16.0 pero te recomiendo que uses la del curso para no tener problemas de compatibilidad con algunas librerías o sintaxis,
+            con nvm puedes tener más de una versión de node, sólo haces nvm-ls resmote, buscas la versión que desees e instalas con nvm instal [version]
+            y puedes cambiar a la versión que desees usando nvm use [version]
+
+Abrir un editor de codigo (VSC). Instalarlo
+        +++Terminal> sudo dpkg --install Downloads/code_1.27...
+            +++Terminal> sudo apt install libraryName  && Si hay problemas ejecutar sudo apt update primero y luego intentar instalar la library
+        +++Terminal> code . (abrir VSC)
+ 
+        +++Estando en VSC, abrir la terminal interna y
+Utilitario para ejecutar codigo javascript. Se puede en VSC. Primer codigo en nodejs
+        Terminal> man node   (para ver los comandos que se pueden ejecutar)
+        Terminal> q   (para salir de la biblioteca de los comandos)
+        Terminal> node   (permite ingresar al CLI (REPL) de nodejs, para ingresar al utilitario, escribir codigo javascript y ejecutarlo)
+        Terminal> .help   (para ver los comandos basicos del REPL)
+            repl> var x = 4 + 3;    (ej. de primer codigo javascript en el repl)
+            repl> x  (imprimir resultado de la variable x)
+            repl> function greeting() {
+                ... return "Hello, welcome to nodejs!";
+                ... }
+            repl> greeting()    (para ver el resultado de la funcion)
+            repl> .exit (salir del REPL)
+        Terminal>
+
+Ejecutar script (archivos.js) desde la terminal: Se crea un archivo .js normal con funciones y para ejecutarlo (correr ese script se hace:
+        Terminal> node fileName.js
+
+Create project of node: npm "node pakage management" es un utilitario que hace parte de node y se utiliza para gestionar paquetes o dependencias de node y para otros fines como por ejemplo la inicializacion de projecs
+npm en realidad no es una abreviatura para "node package manager", sino un retroacronimo para "npm is not an acronym"
+
+        Terminal> mkdir folderName   (create folder for project)
+        Terminal> cd folderName
+            NOTA: cd folderName && mkdir newFolderName && cd newFolderName  (Esta instruccion reemplaza las dos anteriores)
+        Terminal> npm init   (iniciar el project, responder las questions para los datos generales del project) o 
+        Terminal> npm init -y (para crear el project con datos por defecto)
+                package name: (proyecto)  (dejar por defecto)
+                version: (1.0.0)   (tambien dejar por defecto)
+                description: bla, bla, bla, etc (importante para la metadata en los motores de busqueda).
+                entry point: (index.js)   (file desde el cual se va a ejecutar el project)
+                test command:   (es el comando de ejecucion de prueba, por el momento dejarlo asi)
+                git repository:    (si se quiere referenciar a algun repositorio, por el momento de jarlo asi)
+                keywords: Proyecto academico (terminos clave para metadatas)
+                author: Wilcasgil
+                license: (ISC)  (dejar esta por defecto) y enter
+                Is this OK? (yes) y enter. Los datos se guardan en un file llamado package.json
+        Se crea la carpeta del proyecto con el archivo package.json
+        Terminal> cd folderNameProject
+        Terminal> code .   (para abrir VSC en el folder del project)
+        Terminal> npm ls    (verificar si el project tiene dependencias)
+        Terminal> npm install cowsay      (dependencia popular que permite aprender de npm. Se trata de una consola que presenta la imagen de una vaca diciendo un comentario)
+            Escribir: "deci": "cowsay Hola vos"  en el file package.json, dentro de "scripts". View file in folder project
+        Terminal> npm run deci    (ejecutar el comando say del script, el cual ejecuta la dependencia cowsay la cual a su vez nos muestra el saludo por medio de la vaca)
+
+------------------
+Configurar un servidor basico
+------------------
+
+------------------
+Instalar nodemon
+------------------
+
+------------------
+Crear un proyecto con express    (otra forma)
+------------------
+    Terminal> mkdir example-one  (crear la carpeta del proyecto)
+    Terminal> cd example-one   (Ingresar a la carpeta) y code . para abrirlo en VSC
+    Terminal> npm init -y  (crear el proyecto con datos basicos)
+    Terminal> cat package.json   (para ver por la terminal el json file con los valores por defecto)
+    Terminal> npm i -S express  (Instalar la dependencia express, y grabarlo directamente en le json file)
+    Terminal> touch servidor.js   (crear un archivo dentro del proyecto)
+    
+    ++Abrir en el editor el file servidor.js y escribir el codico para crear el servidor
+
+    ++Luego para levantar o prender el servidor abrir el file package.json y en "scripts", borrar "test" y crear
+        +++ "start": "node servidor",   (generalmente es el script que va ir en produccion)
+        +++ "dev": "nodemon servidor"   (es donde se va a arrancar con nodemon)
+    
+    Terminal> npm i -D nodemon    (instalar nodemon en el proyecto)
+
+    Terminal> npm run dev   (para leventar el servidor y este debe esta ok)
+
+    ++firefox http://localhost/   (Ir al navegador y escribir la url del servidor para validar que esta funcionando )
+
+    ++Luego en el servidor file cambiar res.send(...) por un formato json
+
+    ++Ir de nuevo al navegador refrescar y ver el mensaje en formato json
+
+
+------------------
+Crear un proyecto con express-generator  (generador de aplicaciones de express - expres application generator)
+------------------
+
+    Terminal> mkdir example-generator  (crear la carpeta del proyecto)
+    Terminal> cd example-generator   (Ingresar a la carpeta)
+    Terminal> code . (para abrirlo en VSC)
+    
+    Terminal> npm i express-generator -g
+
+    Terminal> express --view=pug ejemplo-app-gen  (pug: sistema de templates que vamos a utilizar en este caso y que crea una carpeta con todo lo necesario y basico para iniciar (arrancar) la aplicacion).
+    
+    ++Ver la carpeta y su contenido
+
+    Terminal> cd ejemplo-app-gen    (ingresar a la carpeta de la aplicacion)
+
+    Terminal> npm i   (instala dependencias necesarias. La i es la abreviatura de install)
+
+        nota: crear un archivo gitignore si se tiene un repositorio
+
+            ++Terminal> touch .gitignore
+
+            ++Abrir el archivo y escribir: node_modules
+
+    Terminal> DEBUG=ejemplo-app-gen:* npm start   (DEBUG=nameApp  correr el aplicativo para validar que todo esta ok. Inicializamos el modo debug de express que biene integrado con el y corremos npm start. El ya trae los script para hacerlo. No fue necesario crearlos )
+
+    Terminal> firefox http://localhost:3000
+
+    ++Ver la carpeta y su contenido nuevamente
+        +++app.js ver su codigo ya que este es el servidor
+
+    Terminal>NODE_ENV=production npm start  (ver correr la aplicacion en produccion)
+
+    Terminal> firefox http://localhost:3000   (vista de error para el usuario)
+
+
+------------------
+Crear una API RESTful  (representational state transfer. Es un estilo de arquitectura para web services. No es un estandar pero si existe una especificacion escrita por Roy Fielding, director de apache sofware foundation
+  Tiene un patron de URL)
+------------------
+Postman: para consumir los end-points en una interfaz grafica
+  opcional: json/viewer: para ver el json de una manera agradable en el navegador
+
+    ++Instalar postman
+    
+    Terminal> sudo apt update
+
+    Terminal> sudo apt install snapd   (esperar es una market play para instalar postman)
+
+    Terminal> sudo snap install postman   (esperar que se instale postman y reiniciar el PC)
+
+    Terminal> postman    (para ejecutarlo. Esperar que se habra y no loguearse. Saltarlo)
+    
+    ++Ir al navegador y buscar una api gratuita por ejemplo en https://rickandmortyapi.com/documentation/#episode-schema
+
+    ++En postman probar esta api
+
+ + Pasar luego el proyecto ECOMMERCE para que lo analicen y lo prueben en postman
+
+    ++Analisis:
+
+        +++Los datos que se va a utilizar en la API donde estan (quemados en array o en una lista o desde una DB)
+
+        +++Cuales son los endponints que se van a consumir luego
+
+        +++Que verbos se esta utilizando (get, post, put, delete)
+
+        +++Que codigos de respuesta HTTP se estan utilizando (200, 201, 400, etc)
+
+ECOMMERCE: Actualizar las dependencias del proyecto (express, nodemon y pug)
+    +npm i express
+    +npm i -D nodemon
+    +npm i -S pug    (otro template engine es Handlebars)
+
+Bulma similar a bootstrap que solo usa CSS no tiene nada de JavaScript lo que lo hace muy libiano
+
+
+
+
+
+
++++++++++++++++++++++++++++++++++
+EVALUATION ITEMS
++++++++++++++++++++++++++++++++++
+
+Métodos HTTP:
+    +GET: Recoger información del servidor.
+    +POST: Añadir información al servidor.
+    +PUT: Reemplazar información en el servidor.
+    +PATCH: Actualizar parte de la información.
+    +DELETE: Eliminar información del servidor.
+    +OPTIONS: Pedir información sobre métodos (saber si podemos ejecutar alguno de los métodos anteriores).
+
+Las cabeceras serán el envío al servidor de cómo queremos hacer la petición (información contextual de la petición - como lo quiero hacer, mas no es lo que quiero hacer)
+    +En request como POST, PUT y PATCH, podemos enviar las siguientes peticiones
+        ++Autenticación => asegurarte de que un determinado usuario puede solicitar cosas al servidor
+            +++Authorization
+        ++Cache => almacenamiento temporal (gestionar durante cuanto tiempo la respuesta sera la misma)
+            +++Cache-Control
+            +++Expires
+        ++Indicaciones
+        ++Condiciones
+        ++Cors (Cross Origin Resource Sharing) => manejar informacion desde fuera de nuestro servidor (por ejemplo, si nuestra aplicacion se va a consumir desde otra
+                                                  aplicacion o desde una mobil. Desde donde se puede consumir)
+            +++Access-Control-Allow-Origin
+        ++Cookies => compartir informacion entre peticiones (por ejemplo, guardar informacion del usuario en una cookie)
+        ++Accept => definir el tipo de contenido que queremos tener (ejempo, contenido solo en formato json o en html, etc)
+            +++Accept
+            +++Accept-Charset
+            +++Accept-Encoding
+
+Los estados son números que indica el estado de la petición:
+    +200: ok
+	+201: Created
+	Las que empiecen con 3 la peticion se redirigido
+	+301: Moved permanently
+	+304: Nor Modified
+	errores: del cliente
+	+400: bag request
+	+401: Unauthorized
+	+403: Forbidden
+	+404: nor found
+	errores: del servidor
+	+500: ha habido algun problema interno
+
+endspoints = puntos de acceso
+
+
++++++++++++++++++++++++++++++++++
+Example API Rest development
++++++++++++++++++++++++++++++++++
+Create new project
+    +On Descktop create new folder
+    +cd folder and code .
+    +In terminal of vsc type: npm init (MIT)
+
+Instal express
+    +npm i express -S
+    +Create the file index.js
+    +test server in terminal: node index.js
+
+Instal the body-parser middleware (nos va a permitir que cuando hagamos peticione de tipo http rest, poder parsear el cuerpo de la peticion (para esos datos poderlos
+recoger y tratar en node.js como este los requiere y ya luego enviarlos a la DB
+    +npm i -S body-parser and import in to index.js file
+
+Instal nodemon in mode dev
+    +npm i -D nodemon
+    +create the script dev in package.json file
+    +test the server: npm run dev
+
+Create the API rest
+    +create a routes in index.js file: app.get()...
+    + go to a browser and open the server url:
+        ++localhost:5000/home
+        ++http://localhost:5000/home/Jesus
+
+    +test the methods
+        ++Explication http methods and response codes: https://es.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+        ++In index.js create the methods structure (get, get, post, put, delete)
+            +++ app.get()
+            +++ app.post()
+        ++Go browser and type: http://localhost:5000/api/product   (test the type petition get)
+        ++test the type petition post: It is with postman
+            +++Open postman: POST= http://localhost:5000/api/product  DEBERA APARECER EL MENSAJE QUE ESCRIBIMOS y en LA TERMINAL EN VSC mostrar el JSON con la DATA
+    
+    +managenent the data from MongoDb: https://platzi.com/tutoriales/1533-mongodb/4636-instalar-mongodb-en-linux-mint-usando-repositorio-de-ubuntu/
+        ++Instal mongodb (si no esta instalado)  
+        ++Execute mongo in other terminal
+        ++Instal mongoose, for Driver in the API for access to DB with connect method
+            +++npm i -S mongoose
+            +++import in index.js file
+            +++ y en server connect: ejecutar mongodb junto con nuestra api
+                ++++In terminal of VSC type: npm run dev    (deberia mostrar los mensajes configurados), luego
+                ++++Stop to mongodb, type in other terminal: sudo systemctl stop mongodb   (deberia mostrar error), luego
+                ++++Start to mongodb, type in other terminal: sudo systemctl start mongodb    (deberia mostar los mensajes de ok conexion)
+        ++Create with mongoose the shemales or model from data base (product model with properties)
+            +++In the project create the models folder
+            +++In the models folder create the model product.js file
+            
+            +++Type the code post method in the product.js file for the product shema and index.js file
+                ++++Test the POST method in postman: POST= http://localhost:5000/api/product/
+            
+            +++Type the code get unit method function in the index.js file for the product shema file
+                ++++Test the GET method in postman: GET= http://localhost:5000/api/product/5ec1f3f09150af4becac5d6a
+                                                                                    5ec1f8a5f516444d52efe7b5
+                                                                                    5ec1f8edf516444d52efe7b6
+            +++Type the code get all method function in the index.js file for the product shema file
+                ++++Test the GET method in postman: GET= http://localhost:5000/api/product/
+                ++++Test in the browser: http://localhost:5000/api/product/
+
+            +++Type the code delete unit method function in the index.js file for the product shema file
+                ++++Test the POST method in postman: DELETE= http://localhost:5000/api/product/5ec1f8a5f516444d52efe7b5
+                ++++Test in the browser: http://localhost:5000/api/product/
+
+            +++Type the code put (update) unit method function in the index.js file for the product shema file
+                ++++Test the PUT method in postman: PUT= http://localhost:5000/api/product/5ec1f8edf516444d52efe7b6     (BODY: solo los campos que se quiere actualizar, el resto se eliminan de la list)
+                ++++Test in the browser: http://localhost:5000/api/product/                (view changes)
+                ++++Or GET= http://localhost:5000/api/product/5ec1f8edf516444d52efe7b6     (view changes)
+
+
+
+
+
+
+
+    
+
+
+
+
